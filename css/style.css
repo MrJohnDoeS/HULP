@@ -1,0 +1,373 @@
+@import url(font-awesome.min.css);
+
+:root {
+    /* Sizes */
+    font-size: 12px;
+    --container-width: 1350px;
+
+    /* Colors */
+    --primary-color: #FF812E;
+    --secondary-color: #0E0E0D;
+    --main-bg: #151617;
+    --dark-grey: #313335;
+    --dark-grey-transparent: rgba(49, 51, 53, 0.7);
+    --light-grey: #7a8085;
+
+    /* Special colors */
+    --transparent-white: rgba(255, 255, 255, 0.5);
+
+    /* Social colors */
+    --facebook-color: #3b5998;
+    --twitter-color: #55acee;
+    --instagram-color: #ac2bac;
+
+    /* Transistion */
+    --transition-duration: .5s;
+    --transition-function: ease;
+}
+
+
+/* NORMALIZER */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    border: none;
+    background: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+
+/* UTILITIES */
+
+body.template-dark {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fff;
+    background-color: var(--main-bg);
+}
+
+/* Navigation on mobile only */
+@media screen and (max-width: 767px) {
+    body.nav-opened {
+        overflow: hidden;
+    }
+}
+
+.container {
+    margin: 0 auto;
+    max-width: var(--container-width);
+}
+
+.section {
+    margin-bottom: 7rem;
+}
+
+
+/* HEADER */
+
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    border-bottom: 1px solid var(--transparent-white);
+    z-index: 100;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+
+/* HEADER -> LOGO */
+
+.logo {
+    display: flex;
+    align-items: center;
+    max-width: 50%;
+    position: relative;
+    z-index: 100;
+}
+
+.logo-img {
+    width: 4rem;
+}
+
+.logo-ttl {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-left: 1rem;
+}
+
+
+/* HEADER -> NAV */
+
+.nav-button {
+    position: relative;
+    z-index: 100;
+    font-size: 3rem;
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+.nav-ico-close {
+    display: none;
+}
+
+.nav-list {
+    align-items: center;
+}
+
+.nav-link {
+    display: inline-block;
+    color: #fff;
+    font-size: 1.5rem;
+    transition: border var(--transition-duration) var(--transition-function);
+}
+
+.nav-link.active::after,
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link.active {
+    color: var(--transparent-white);
+}
+
+/* Navigation on mobile only */
+@media screen and (max-width: 767px) {
+
+    .nav-list {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        z-index: 90;
+        left: 0;
+        top: -100vh;
+        width: 100%;
+        height: calc(100vh - 6rem - 1px);
+        background-color: rgba(0, 0, 0, .75);
+        transition: top var(--transition-duration) var(--transition-function);
+    }
+
+    .nav-item {
+        width: 100%;
+        border-bottom: 1px solid var(--transparent-white);
+    }
+
+    .nav-link {
+        width: 100%;
+        padding: 2rem;
+        text-align: center;
+        font-size: 2rem;
+    }
+
+    /* Navigation opened on mobile */
+
+    .nav.nav-opened .nav-ico-close {
+        display: inline-block;
+    }
+
+    .nav.nav-opened .nav-ico-burger {
+        display: none;
+    }
+
+    .nav.nav-opened .nav-list {
+        top: calc(6rem + 1px);
+    }
+}
+
+/* HERO BANNER */
+
+.hero-banner {
+    width: 100%;
+    height: 100vh;
+    background-image: url('../img/hero-bg-sm.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+    background-attachment: fixed;
+}
+
+.hero-banner-content {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+}
+
+.hero-logo {
+    width: 40%;
+    max-width: 500px;
+    position: relative;
+    top: min(7vw, 6rem);
+}
+
+.hero-ttl {
+    font-weight: 900;
+    font-size: min(7vw, 6rem);
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-ttl>p {
+    line-height: min(7vw, 6rem);
+}
+
+.button-scroll {
+    display: block;
+    background-color: var(--secondary-color);
+    width: 5rem;
+    height: 5rem;
+    border-radius: 5rem;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    position: absolute;
+    bottom: 2rem;
+    transition: background var(--transition-duration), transform var(--transition-duration);
+    transition-timing-function: var(--transition-function);
+
+}
+
+.button-scroll:hover {
+    transform: scale(1.5);
+    background-color: var(--primary-color);
+}
+
+/* TITLES */
+
+.title {
+    text-align: center;
+    width: 100%;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 7rem;
+}
+
+.title-top {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color: var(--secondary-color);
+}
+
+.title-main {
+    font-size: 3rem;
+}
+
+
+
+
+/* FOOTER */
+
+.footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 2rem;
+    border-top: 1px solid var(--transparent-white);
+    background-image: url('../img/hero-bg-sm.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom center;
+    background-attachment: fixed;
+}
+
+
+
+/* FOOTER - LEGAL */
+
+.footer-legal>li {
+    display: inline;
+}
+
+.footer-legal>li:not(:last-child)::after {
+    content: "|";
+    padding: 0 1rem;
+}
+
+.footer-legal-link {
+    color: var(--primary-color);
+}
+
+.footer-legal-link:hover {
+    text-decoration: underline;
+}
+
+
+/* FOOTER - SOCIAL */
+
+
+
+
+.social {
+    width: auto;
+    order: 3;
+}
+
+.social-link {
+    background-color: rgba(0, 0, 0, 0);
+    transition: background var(--transition-duration) var(--transition-function);
+}
+
+.bg-facebook:hover {
+    background-color: var(--facebook-color);
+}
+
+.bg-twitter:hover {
+    background-color: var(--twitter-color);
+}
+
+.bg-instagram:hover {
+    background-color: var(--instagram-color);
+}
